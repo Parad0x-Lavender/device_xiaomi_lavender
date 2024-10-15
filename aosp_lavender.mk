@@ -14,6 +14,15 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 # Inherit from lavender device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
+# Boot Animaton
+TARGET_BOOT_ANIMATION_RES := 1080
+
+# The Pixel Project flags
+CUSTOM_BUILD_TYPE := Unofficial
+TARGET_FACE_UNLOCK_SUPPORTED := true
+USE_PIXEL_CHARGER := true
+TARGET_INCLUDE_LIVE_WALLPAPERS := true
+
 PRODUCT_NAME := aosp_lavender
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := lavender
