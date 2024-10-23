@@ -80,7 +80,7 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
    hardware/qcom-caf/common/vendor_framework_compatibility_matrix_legacy.xml \
    hardware/xiaomi/vintf/xiaomi_framework_compatibility_matrix.xml \
-   vendor/lineage/config/device_framework_matrix.xml
+   vendor/aosp/config/device_framework_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/configs/hidl/framework_manifest.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/hidl/manifest.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
@@ -148,17 +148,7 @@ $(foreach p, $(call to-upper, $(BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST))
     $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 
 # Partitions - Reserved Sizes
-ifeq ($(WITH_GMS),true)
-BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 67108864 # 64 MB
-BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 67108864 # 64 MB
-BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 67108864 # 64 MB
-BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 67108864 # 64 MB
-else
-BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT := -1
-BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 1073741824
-BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := -1
-BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 1073741824
-endif
+-include vendor/aosp/config/BoardConfigReservedSize.mk
 
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
