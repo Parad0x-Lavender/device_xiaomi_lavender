@@ -454,6 +454,13 @@ PRODUCT_PACKAGES += \
     libpng.vendor \
     libprocessgroup.vendor
 
+# Updater
+PRODUCT_PACKAGES += \
+    Updater
+
+PRODUCT_COPY_FILES += \
+    vendor/aosp/prebuilt/common/etc/init/init.tpp-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.tpp-updater.rc
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service-qti \
